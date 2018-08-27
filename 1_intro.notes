@@ -1,0 +1,20 @@
+-----------------------------------------------------------
+    Terms and Connotations
+-----------------------------------------------------------
+- planning
+	- motion planning / trajectory planning
+		- convert high level task specification into low level movement description
+		- robots
+			- continuous space
+			- traditionally ignored dynamics
+	- AI
+		- discrete space
+	- branch of algorithms
+- control theory
+	- about designing inputs to physical systems described by differential equations
+		- system could be mechanical or electrical
+	- feedback policies
+	- focus on stability
+		- dynamics do not cause system to go out of control
+	- secondary focus on optimality
+		- minimize resource consumption
