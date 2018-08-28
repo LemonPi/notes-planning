@@ -18,3 +18,16 @@
 		- dynamics do not cause system to go out of control
 	- secondary focus on optimality
 		- minimize resource consumption
+
+-----------------------------------------------------------
+    Planning elements
+-----------------------------------------------------------
+- user of the plan
+	- robot or decision maker
+	- agent
+		- popular in AI
+	- controller
+		- popular in control theory
+		- plan in this case called control policy or law
+	- players
+		- game theory
