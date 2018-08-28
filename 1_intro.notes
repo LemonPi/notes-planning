@@ -31,3 +31,13 @@
 		- plan in this case called control policy or law
 	- players
 		- game theory
+
+-----------------------------------------------------------
+    Active challenges
+-----------------------------------------------------------
+- nonholonomic planning
+	- planning under nonholonomic constraints
+- planning with dynamics
+	- when dynamics cannot be ignored
+		- too high speed so momentum means can't stop instantaneously
+- planning under uncertainty
