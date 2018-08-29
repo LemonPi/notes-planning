@@ -31,6 +31,33 @@
 		- plan in this case called control policy or law
 	- players
 		- game theory
+- state
+	- planning inside a state space that covers all possible situations that could arise
+		eg. position and orientation of a robot, locations of tiles in a puzzle
+	- can be either discrete or continuous
+	- usually implicitly represented by the planning algorithm
+		- too large to explicitly represent it
+- sequence
+	- sequence of decisions applied over time
+	- time may be explicit or implicit
+		- implicit time allows for any gap in between decisions, but preserves order
+- initial and goal states
+	- or a set of goal states
+- a criterion
+	- encodes desired outcome of plan in terms of the states and actions executed
+	- 2 kinds of planning concerns
+		1. feasibility: find a plan to arrive at goal state regardless of efficiency
+		2. optimality: find a feasible plan that optimizes performance in some specified manner
+	- feasibility is already hard
+	- determining right formulation for criterion is also hard
+	- probabilistic uncertainty situations call for a optimality treatment
+		- feasibility is worst case performance on uncertainties
+		- optimal in terms of expected costs
+- a plan
+	- can simply specify a sequence of actions to take if future state is fully predicted
+	- if future state can't be predicted can specify action as a function of state
+	- if state can't be determined then action has to be a function of whatever information is available
+		- known as #information state#
 
 -----------------------------------------------------------
     Active challenges
