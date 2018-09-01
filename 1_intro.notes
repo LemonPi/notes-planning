@@ -60,6 +60,27 @@
 		- known as #information state#
 
 -----------------------------------------------------------
+    How to use a plan
+-----------------------------------------------------------
+1. execute the plan
+	- simulation
+	- physical device
+	- usually done by a machine
+		- humans could also execute it
+		- can have 2 modes of execution
+			1. planner gives plan to machine which executes it autonomously
+				- planner and machine decoupled
+				- machine can be programmed
+			2. plan encodes the entire machine
+				- the machine's operation executes the plan
+2. refine it into a better plan
+	- planner accepts a plan and produces another plan
+	eg. compute collision free path -> smoothing to satisfy differential constraints 
+		-> trajectory (velocity as a function of position along path) -> design a feedback control law to track trajectory
+3. include it as an action in a higher level plan
+	- needs to guarantee termination
+
+-----------------------------------------------------------
     Active challenges
 -----------------------------------------------------------
 - nonholonomic planning
