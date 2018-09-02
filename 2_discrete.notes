@@ -25,7 +25,40 @@
 -----------------------------------------------------------
     Search for feasibility
 -----------------------------------------------------------
-
+- graph search algorithms
+- explore state transition graph incrementally
+	- rather than fully specified in advance (no memory)
+- important for algos to be #systematic#
+	- aka complete: if finite, find a solution or declare there is none in finite time
+		- accomplished by keeping track of already visited states and avoiding redundant visits
+	- if infinite, find a solution in finite time if it exists, or search forever if there is none
+		- accomplished by exploring every reachable vertex as search iterations -> infinite
+- pretty much all the same algorithm (generalization of BFS)
+	- only difference in ordering of priority queue and augmented info for each node
+- unified search algo
+	- incrementally construct search graph G(V,E)
+		- G is subgraph of state transition graph and is the one explored so far
+	1. initialize
+		- E empty
+		- V contains some starting nodes
+			- V = {x_I} for forward search
+			- V = {x_G} for backward search
+			- V = {x_I, x_G} for bidirectional
+	2. select vertex
+		- choose n_curr in V for expansion
+		- usually done by maintaining priority queue
+		- x_curr is the state associated with n_curr
+	3. apply an action
+		- get new state x_new
+		- x_new = f(x, u) for some u in U(x) for forward search
+		- x = f(x_new, u) for some u in U(x_new) for backward
+	4. insert directed edge into graph
+		- if algo-specific tests are passed
+		- if x_new not yet in V, insert into V
+	5. check for solution
+		- whether path exists from x_I to x_G
+		- trivial if there's only a single search tree
+	6. return to step 2
 
 -----------------------------------------------------------
     Search for optimality
