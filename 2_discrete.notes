@@ -63,5 +63,20 @@
 -----------------------------------------------------------
     Search for optimality
 -----------------------------------------------------------
-
-
+- uses most of the same concepts
+	- new #cost functional# L
+- choose to min (arbitrary selection and symmetric with max)
+- first consider simpler fixed length plans
+	- P_K is a K-step plan
+	- P_K = (u_1, u_2, ..., u_K) K actions
+	- (x_1, x_2, ..., x_K+1) derived from x_1 and f given P_K
+	- let L = K + 1
+	- L(P_K) = sum{k=1..K} l(x_k, u_k) + l_F(x_F)
+		- l_F(x_F) = 0 if x_F in X_G else inf
+		- l_F is unnecessary if L is only applied to plans that reach goal
+			- but this makes notation more cumbersome to restrict the action space
+			- having l_F allows extending L's domain to all plans
+			- trick to convert feasibile hard constraint into optimization
+	- to get feasible solution restricted to K steps, let l(x,u) := 0
+	- to get min step solution <= K steps, let l(x,u) := 1
+	- can let l_F(x) have != 0 values when x in X_G to represent different quality of goals
