@@ -1,0 +1,34 @@
+-----------------------------------------------------------
+    Discrete planning
+-----------------------------------------------------------
+- state space is finite or countably infinite (integer assignable)
+- no geometric models or differential equations needed
+- no uncertainty (for now)
+
+-----------------------------------------------------------
+    Problem formulation
+-----------------------------------------------------------
+- state x
+	- takes on a value from the state space X
+	- goal states X_G subset X 
+- action u
+	- produces new state when applied to current state
+		- described by state transition function f
+		f(x,u) = x'
+- action space U(x)
+	- set of all actions applicable to state x
+	- U = union{x E X} U(x)
+- directed state transition graph
+	- set of vertices is X
+- want compact encoding of the problem
+
+-----------------------------------------------------------
+    Search for feasibility
+-----------------------------------------------------------
+
+
+-----------------------------------------------------------
+    Search for optimality
+-----------------------------------------------------------
+
+
