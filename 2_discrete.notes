@@ -85,6 +85,8 @@
 	- leads directly to #value iteration#
 		- iteratively compute cost to come or cost to go
 		- backward value iteration
+			- uses cost to go (to x_G)
+			- fixed x_G
 			- let G*_k be the accumulated cost from stage k to F under execution of the optimal plan
 				G*_k(x_k) = min{u_k, ... u_K}( sum{i=k..K} l(x_i, u_i) + l_F(x_F))
 			- when k = F, G*_F(x_F) = l_F(x_F)
@@ -94,3 +96,6 @@
 			- in each iteration some states will receive inf value due to unreachability
 			- get G*_1 in O(K|X||U|) time
 				- optimal cost to go from any initial state
+		- forward value iteration
+			- uses cost to come (from x_I)
+			- fixed x_I
