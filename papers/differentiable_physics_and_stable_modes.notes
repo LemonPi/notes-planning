@@ -1,0 +1,20 @@
+-----------------------------------------------------------
+	Differentiable Physics and Stable Modes for Tool-Use and Manipulation Planning
+-----------------------------------------------------------
+- http://www.roboticsproceedings.org/rss14/p44.pdf
+- tool-use planning
+	- physical interaction
+		- hitting
+		- throwing
+	- impose constraints at path optimization level
+		- stable kinematic
+		- differentiable dynamical and impulse exchange
+- combines discrete and continuous optimization
+	- not sure how the problem of when/what to apply discrete actions onto was solved to reduce search space
+- from geometry is able to have robot plan tool and environment exploitation
+
+-----------------------------------------------------------
+    Questions
+-----------------------------------------------------------
+- how is the continuous aspect optimized
+	- choose where to touch on the object
