@@ -143,11 +143,15 @@
 	- historically first-order logic
 	- many variants
 1. a finite, nonempty set I of instances
+	- complete set of distinct things that exist
 2. a finite, nonempty set P of predicates
 	- binary-valued functions of >= 1 instances
 	- application of a predicate to a specific set of instances is called a <positive literal>
 	- logically negated positive literal is a <negative literal>
+	- <complementary pair> refers to a positive literal and its counterpart negative
+	- properties or statements about the instances
 3. a finite, nonempty set O of operators
+	- purpose is to change the world
 	- each has preconditions
 		- positive or negative literals that must hold for the operator to be applied
 	- each has effects
@@ -155,3 +159,22 @@
 4. an initial set S of positive literals
 	- negative literals are implied by the absence of the corresponding positive literal from S
 5. a goal set G of both positive and negative literals
+
+ex. 
+I = {Battery1, Battery2, Cap, Flashlight}
+P = {On(Cap, Flashlight), In(Battery, Flashlight)}
+O = {
+	(PlaceCap, 
+		predconditions: {not On(Cap, Flashlight)},
+		effects: {On(Cap, Flashlight)}),
+	(RemoveCap,
+		preconditions: {On(Cap, Flashlight)},
+		effects: {not On(Cap, Flashlight)}),
+	(Insert(i),
+		preconditions: {not On(Cap, Flashlight), not In(i, Flashlight)},
+		effects: {In(i, Flashlight)})
+	}
+S = {On(Cap, Flashlight)}
+G = {On(Cap, Flashlight), In(Battery1, Flashlight), In(Battery2, Flashlight)}
+
+sample plan is (RemoveCap, Insert(Battery1), Insert(Battery2), PlaceCap)
