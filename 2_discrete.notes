@@ -100,3 +100,16 @@
 			- uses cost to come (from x_I)
 			- fixed x_I
 			- finds optimal plans from one initial to all goal states
+
+-----------------------------------------------------------
+    Unspecified lengths
+-----------------------------------------------------------
+- replace specification of K with special action u_T
+	- L(P_K) = sum{k=1..K} l(x_k, u_k) + l_F(x_F) looks like the same
+		- K is not pretermined so the domain of L is much larger than before
+	- #termination action# u_T
+		- applying u_T at x_k repeats the action forever
+			- for all i >= k, u_i = u_T, x_i = x_k, l(x_i, u_T) = 0
+	- plan with (u1, u2) is equivalent with (u1, u2, u_T, u_T, u_T)
+	- allows optimization over all plans of length <= K
+		- instead of fixed K
