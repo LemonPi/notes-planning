@@ -99,3 +99,4 @@
 		- forward value iteration
 			- uses cost to come (from x_I)
 			- fixed x_I
+			- finds optimal plans from one initial to all goal states
