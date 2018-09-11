@@ -134,3 +134,24 @@
 	- unpredictability
 	- sensing uncertainty
 	- multiple decision makers
+
+-----------------------------------------------------------
+    STRIPS Representation
+-----------------------------------------------------------
+- most common logic-based representation
+- based on propositional logic
+	- historically first-order logic
+	- many variants
+1. a finite, nonempty set I of instances
+2. a finite, nonempty set P of predicates
+	- binary-valued functions of >= 1 instances
+	- application of a predicate to a specific set of instances is called a <positive literal>
+	- logically negated positive literal is a <negative literal>
+3. a finite, nonempty set O of operators
+	- each has preconditions
+		- positive or negative literals that must hold for the operator to be applied
+	- each has effects
+		- positive or negative literals that hold as a result of applying the operator
+4. an initial set S of positive literals
+	- negative literals are implied by the absence of the corresponding positive literal from S
+5. a goal set G of both positive and negative literals
