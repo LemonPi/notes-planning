@@ -121,3 +121,16 @@
 - focuses on interesting (non-stationary value) nodes
 	- good for some problems
 	- not suitable for problems where this complicates the model such that computing it becomes intractable
+
+-----------------------------------------------------------
+    Logic Representation of Discrete Planning
+-----------------------------------------------------------
+- need implicit encodings of giant problems (10^100 states)
+- can use logic to represent certain kinds of problems compactly
+	- output is also human-friendly
+	- historically popular
+- difficult to generalize (especially compared to state-space)
+	- continuous spaces
+	- unpredictability
+	- sensing uncertainty
+	- multiple decision makers
