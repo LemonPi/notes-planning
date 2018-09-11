@@ -113,3 +113,11 @@
 	- plan with (u1, u2) is equivalent with (u1, u2, u_T, u_T, u_T)
 	- allows optimization over all plans of length <= K
 		- instead of fixed K
+
+-----------------------------------------------------------
+    Dijkstra
+-----------------------------------------------------------
+- similar to forward value iteration
+- focuses on interesting (non-stationary value) nodes
+	- good for some problems
+	- not suitable for problems where this complicates the model such that computing it becomes intractable
