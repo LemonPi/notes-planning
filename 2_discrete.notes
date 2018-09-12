@@ -198,3 +198,53 @@ sample plan is (RemoveCap, Insert(Battery1), Insert(Battery2), PlaceCap)
 	- extend alphabet to have 'd' a don't care symbol
 	- X_G is not a set of strings with 'd' in them
 - convert operators to state transition equation f(x,u)
+
+
+-----------------------------------------------------------
+    Logic-Based Planning Methods
+-----------------------------------------------------------
+- exploit structure of a particular representation
+	- a lot of heuristics
+- searching in the space of partial plans
+	- instead of searching in X
+	- iteratively achieve required sub-goals while ensuring no conflicts arise
+	- currently not considered as competitive as state space search methods
+		- difficult to develop heuristics without referencing state
+- build a planning graph
+	- instead of the state transition graph, use much smaller <planning graph>
+		- polynomial in size rather than exponential
+	- contains partial information about reachability
+	- indicates states that can possibly be reached
+		- overapproximates reachable set
+	- extracting a plan from the planning graph can take exponential time
+	- layered graph (L1, O1, L2, O2, ..., L_k, O_k, L_k+1)
+		- alternate literal and operators
+		- li -> oi for all preconditions li of oi
+		- oi-1 -> li for each effect li of oi-1
+	- no variables allowed in operators
+		- operators with variables are converted to a set of operators with all possible substitution of variables
+	- build graph layer by layer
+		- start with L1
+			- place all positive literals in S in L1
+			- place all negatives of anything not in S
+		- Oi contains the set of all operators with preconditions as a subset of Li
+		- expand until stabilization
+			- need trivial operator for where l is the only precondition and effect
+				- similar to termination action u_T to allow for variable length plans
+	- mutex conditions
+		- mutual exclusive operations o, o' E Oi
+		1. inconsistent effects
+			- effect of o is the negated literal of an effect of o'
+		2. interference
+			- effect of o is ngeated literal of a precondition o'
+		3. competing needs
+			- precondition from o and o' are mutex in Li
+				- l, l' E Li mutex if
+					1. negated literals (l = not l')
+					2. inconsistent support
+						- each pair o, o' E O_i-1 that achieves l and l' is mutex
+						- unless an operator that achieves both l and l'
+- planning as boolean satisfiability problem
+	- Davis-Putnam procedure to solve satisfaction problems
+		- DFS and backtracking
+	- have to set stage limit (significant drawback of this approach)
