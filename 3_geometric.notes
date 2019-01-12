@@ -47,3 +47,18 @@
 		- choose counterclockwise order on boundary of the face
 		- f(x,y,z) = ax + by + cz + d
 		- same as half-plane
+
+-----------------------------------------------------------
+    Other Representations
+-----------------------------------------------------------
+- direct encoding of nonconvex polygons/polyhedra
+	- use direction of listing points to indicate fill or hole
+- 3D triangles
+	- popular in computer graphics
+	- hard to check if a point is inside or outside a 3D obstacle
+- nonuniform rational B-splines (NURBS)
+	- parametric equations rather than implicit equations
+	- easy rendering hard collision detection
+	- defineable in any dimension
+- bitmap
+	- occupancy grid
