@@ -36,3 +36,14 @@
 	- let e(x,y) be TRUE if f(x,y) <= 0
 	- for being in a single obstacle
 		- e1(x,y) and e2(x,y) .. em(x,y) is TRUE
+
+-----------------------------------------------------------
+    Obstacle Polyhedra (3D)
+-----------------------------------------------------------
+- replace polygons with polyhedra
+- replace half-planes with half-spaces
+	- vertices of a face has a plane passing through them
+		- can't be colinear
+		- choose counterclockwise order on boundary of the face
+		- f(x,y,z) = ax + by + cz + d
+		- same as half-plane
