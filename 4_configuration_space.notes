@@ -36,3 +36,27 @@
 			- such that x1 in O1, x2 in O2, and O1 int O2 = ∅
 			- always possible to separate x1 and x2 into nonoverlapping open sets
 			- satisfying this called a Hausdorff space
+
+-----------------------------------------------------------
+    Homeomorphism
+-----------------------------------------------------------
+- continuous functions on topological spaces
+	- f : X -> Y
+	- for any set B in Y, let the #preimage# of B be
+		- f-1(B) = {x in X | f(x) in B}
+		- does not require f to have an inverse
+	- f is continuous if f-1(O) is an open set for every open set O in Y
+- suppose f : X -> Y is bijective (one to one and onto)
+	- f inverse exists
+	- if f and f inverse are continuous, then f is a homeomorphism
+	- X and Y are #homeomorphic# if there exists a homeomorphism between them
+		- equivalence relation
+- in Rn, if a subset can be mapped via a nonsingular linear transformation then X and Y are homeomorphic
+	eg. rigid body transformations
+- surprisingly bounded and unbounded sets may be homeomorphic
+	eg. f(x) = 1/x makes (0,1) and (1,inf) homeomorphic
+- graphs can be homeomorphic too
+	- obviously if two graphs are isomorphic
+		- edge between v1 and v1' in G1 iff edge between f(v1) and f(v1') in G2
+	- if not isomorphic can still be homeomorphic by removing vertices
+		- vertices of degree 2 without affecting connectivity
