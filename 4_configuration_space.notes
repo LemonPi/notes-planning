@@ -28,3 +28,11 @@
 			- for some open set U in X
 			- trim away all points not in Y
 - trivial topological space of just X and ∅ being the open sets
+- too general to be useful
+	- apply additional conditions/properties
+		- #Hausdorff axiom#
+			- for any distinct x1,x2 in X
+			- there exists open sets O1 and O2
+			- such that x1 in O1, x2 in O2, and O1 int O2 = ∅
+			- always possible to separate x1 and x2 into nonoverlapping open sets
+			- satisfying this called a Hausdorff space
