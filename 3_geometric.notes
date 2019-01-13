@@ -62,3 +62,15 @@
 	- defineable in any dimension
 - bitmap
 	- occupancy grid
+
+-----------------------------------------------------------
+    Rigid Body Motion
+-----------------------------------------------------------
+- 2 interpretation of transforms (inverse operations)
+	- moving the robot
+		- what motion planning usually uses
+	- moving the reference frame
+- for solid representations, apply the inverse transform to all primitives
+- rigid body transformations are a rotation followed by a translation
+	- translation for solid
+		- Hi = {(x,y,z) in W | fi(x,y,z) <= 0} ==> Hi = {(x,y,z) in W | fi(x-x_t, y-y_t, z-z_t) <= 0}
