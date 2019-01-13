@@ -1,0 +1,30 @@
+-----------------------------------------------------------
+    Configuration Space
+-----------------------------------------------------------
+- abstraction for all possible transformations
+- allows same algorithms to be applied to robots of different kinematics and geometry
+- often implicitly represented
+
+-----------------------------------------------------------
+    Topological Spaces
+-----------------------------------------------------------
+- open sets are the crux of topology
+- a set X is called a #topological space# if there is a collection of open subsets of X for which
+	1. arbitrary unions of open sets are open sets
+	2. finite intersections of open sets are open sets
+	3. X and ∅ are open sets
+- set C is closed iff X\C is open
+- Rn is a topological space for any integer n
+- obstacles are defined with primitives of H = {x in Rn | f(x) <= 0}
+	- each primitive is a closed set
+	- each obstacle is a finite intersection of them
+		- also leads to a closed set
+	- all obstacles is a finite union of them
+		- also leads to a closed set
+- subspace Y in topological space X
+	- subspace topology on Y
+		- define the open sets to be every subset of Y that
+			- can be represented as U int Y
+			- for some open set U in X
+			- trim away all points not in Y
+- trivial topological space of just X and ∅ being the open sets
