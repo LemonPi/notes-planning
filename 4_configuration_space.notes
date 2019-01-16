@@ -119,3 +119,14 @@
 - S1 x S1 /= S2
 	- torus
 	- Tn used for (S1)n
+
+-----------------------------------------------------------
+    Projective Spaces
+-----------------------------------------------------------
+- RPn is the set of all lines in Rn+1 passing through the origin
+	- each line is a point in RPn
+	- each line intersects Sn at exactly 2 places
+		- #antipodal# points that are as far away as possible from each other on Sn
+		- pair of antipodal points unique for each line
+			- defines a homeomorphism
+
