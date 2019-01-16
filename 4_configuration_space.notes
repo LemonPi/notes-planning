@@ -209,3 +209,22 @@
 	- homeomorphic to Rn x SO(n)
 		- so SE(2) is homeomorphic to R2 x S1
 		- because S1 is multiply connected, there is a wraparound
+
+-----------------------------------------------------------
+    SE(3)
+-----------------------------------------------------------
+- need some work to represent O(3), but otherwise the same
+- unit complex numbers and SO(2) are #isomorphic#
+	- can map to the other space, perform an equivalent operation on the other space, and map back correctly
+		- behaves as if performing the operation on the first space
+- consider quaternions to represent 3D rotations
+	- h in H where h = a + bi + cj + dk
+	- can be considered 4D vector
+	- i^2 = j^2 = k^2 = ijk = -1
+		- follows that
+			- ij = k
+			- jk = i
+			- ki = j
+	- H is a group wrt quaternion multiplication
+		- not commutative
+	- unit quaternions is homeomorphic to S3
