@@ -157,3 +157,29 @@
 				- h(1,t) = h(1,0)
 		- continuity in h prevents it from jumping over holes
 - #simply connected# if all paths are homotopies of each other in X
+
+-----------------------------------------------------------
+    Groups
+-----------------------------------------------------------
+- a set together with a binary operation with axioms
+	1. closure
+	2. associativity
+	3. identity
+	4. inverse
+- some groups are also commutative/Abelian
+- fundamental group constructed from paths
+	- call any continuous path for which f(0) = f(1) a #loop#
+	- let xb in X be a base point
+	- consider set of all loops such that f(0) = f(1) = xb
+		- make this into a group by defining the operation T = T1 o T2 as
+			- for t in [0,1/2)
+				- T1(2t)
+			- for t in [1/2,1]
+				- T2(2t-1)
+		- concatenate two loops together
+	- keeps track of how many times a path travels around holes
+- #contractible# is a stronger concept than simply connected
+	- equivalent for the plane
+	- homotopy groups of all orders are equal to the identity group
+	- can shrink X to a point
+	- no holes
