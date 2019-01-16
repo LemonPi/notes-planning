@@ -60,3 +60,22 @@
 		- edge between v1 and v1' in G1 iff edge between f(v1) and f(v1') in G2
 	- if not isomorphic can still be homeomorphic by removing vertices
 		- vertices of degree 2 without affecting connectivity
+
+-----------------------------------------------------------
+    Manifolds
+-----------------------------------------------------------
+- important kind of topological space that include most configuration spaces
+- intuitively behaves like a surface at every point
+- manifold: a topological space M in Rm
+	- if for every x in M, an open set O in M exists such that
+		1. x in O
+		2. O is homeomorphic to Rn
+		3. n is fixed for all x in M
+	- fixed n is called the #dimension# of the manifold
+	- around any point x in M, the space around it behaves as for any point y in Rn
+		- allowable directions of motion are the same in each one
+	- m >= n
+	- m <= 2n+1 sufficient for any manifold
+	- impossible for a manifold to hold boundary points
+		- not contained in open sets
+	- considered equivalent if homeomorphic
