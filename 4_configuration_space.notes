@@ -130,3 +130,30 @@
 		- pair of antipodal points unique for each line
 			- defines a homeomorphism
 
+-----------------------------------------------------------
+    Paths and Connectivity
+-----------------------------------------------------------
+- let X be a topological space (also be a manifold for convenience)
+	- path: a continuous function T : [0,1] -> X
+		- could instead use R as the domain
+- #connected#
+	- X is connected if it can't be represented as the union of 2 disjoint nonempty open sets
+	- doesn't imply a path exists between any pair of points...
+		- crazy examples like the topologist's sine curve exists
+		- but if X is a manifold then a path will always exist
+- #path connected#
+	- for all x1, x2 in X there exists a path T such that T(0) = x1 and T(1) = x2
+	- path connected -> connected
+- #homotopy#
+	- two paths T1 T2 are homotopic with fixed endpoints if there exists
+		- continuous function h : [0,1] x [0,1] -> X for which
+			1. start with first path
+				- h(s,0) = T1(s)
+			2. end with second path
+				- h(s,1) = T2(s)
+			3. fixed starting point
+				- h(0,t) = h(0,0)
+			4. fixed ending point
+				- h(1,t) = h(1,0)
+		- continuity in h prevents it from jumping over holes
+- #simply connected# if all paths are homotopies of each other in X
