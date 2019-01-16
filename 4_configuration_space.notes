@@ -183,3 +183,29 @@
 	- homotopy groups of all orders are equal to the identity group
 	- can shrink X to a point
 	- no holes
+
+-----------------------------------------------------------
+    SE(2)
+-----------------------------------------------------------
+- manifold for all rigid body transformations in R2
+- x,y in R can be selected for translation so M1 = R2
+- rotation in S1 can be selected independently
+- C = M1 x M2 = R2 x S1
+	- higher dimensional cylinder
+- need more technical argument to generalize to 3D case
+- consider the set of transformations as a group
+	- set of all nonsingular n x n real matrices is the general linear group wrt matrix multiplication
+		- GL(n)
+		- inverse A-1 in GL(n) since nonsingular
+- can form subgroups by removing some elements and satisfy the group axioms
+- an important subgroup of GL(n) is the #orthogonal group# O(n)
+	- AA^T = I
+	- determinant 1 or -1
+		- special orthogonal SO(n) requires det = 1
+			- group of n dim rotation matrices
+			- homeomorphic to S1
+	- n Choose 2 (n*(n-1)/2) degrees of freedom
+- special Euclidean group SE(n) [R v; 0 1]
+	- homeomorphic to Rn x SO(n)
+		- so SE(2) is homeomorphic to R2 x S1
+		- because S1 is multiply connected, there is a wraparound
