@@ -228,3 +228,9 @@
 	- H is a group wrt quaternion multiplication
 		- not commutative
 	- unit quaternions is homeomorphic to S3
+	- representing a rotation around an axis
+		- axis given by v = [v1 v2 v3]
+		- rotation given by theta
+		- h = cos(theta/2) + (v1*sin(theta/2))i + (v2*sin(theta/2))j + (v3*sin(theta/2))k
+		- not unique since h and -h represent the same rotation
+			 - rotation by theta around v is the same as rotation by 2pi-theta around -v
