@@ -12,6 +12,25 @@
 		- realization theory on how to convert to state-space
 
 -----------------------------------------------------------
+    Methods Overview
+-----------------------------------------------------------
+- algebraic
+	- exact solution of SARX
+		- Vidal 2003
+		- requires noise free
+	- mixed integer programming
+		- Roll 2004
+		- global optimum
+		- only tractable for small data sets
+- clustering
+	- Ferrari-Trecate 2003
+	- Nakada 2005
+- bayesian
+	- Juloski 2005
+- bounded error
+	- Bemporad 2005
+
+-----------------------------------------------------------
     Questions
 -----------------------------------------------------------
 - what is the difference between switched and piecewise affine?
