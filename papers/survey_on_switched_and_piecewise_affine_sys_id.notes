@@ -1,0 +1,17 @@
+-----------------------------------------------------------
+    Models
+-----------------------------------------------------------
+- switched affine systems are collections of affine systems indexed by discrete index variable
+	- discrete state
+- piecewise affine (PWA) systems are a special class of switched affine systems
+	- partition input domain into finite polyhedral regions
+- input-out counterparts
+	- switched ARX (SARX)
+	- piecewise ARX (PWARX)
+	- most proposed methods is about identifying these
+		- realization theory on how to convert to state-space
+
+-----------------------------------------------------------
+    Questions
+-----------------------------------------------------------
+- what is the difference between switched and piecewise affine?
