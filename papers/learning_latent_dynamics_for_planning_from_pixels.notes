@@ -1,0 +1,25 @@
+-----------------------------------------------------------
+    Abstract
+-----------------------------------------------------------
+- learn dynamics in unknown environment
+	- image domain
+- PlaNet agent
+	- learn from pixels
+	- choose actions through online planning in latent space
+- deterministic and stochastic transition function
+- test on continuous control tasks
+	- supposed to be hard
+		- contacts
+		- partial observability
+		- sparse rewards
+	- advantages over model-free algorithms
+		- significantly fewer training episodes
+		- comparable final performance
+
+-----------------------------------------------------------
+    Questions
+-----------------------------------------------------------
+- why use image domain?
+- what does online planning mean?
+- what is the transition function for?
+- what is a generalized variational inference objective?
