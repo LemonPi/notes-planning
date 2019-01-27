@@ -37,6 +37,40 @@
 	- predicting multiple time steps
 		- standard is to train on one-step predictions
 
+-----------------------------------------------------------
+    Latent Space Planning
+-----------------------------------------------------------
+- images don't reveal full state of environment
+	- consider partially observable Markov decision process (POMDP)
+		- transition function
+			- s_t ~ p(s_t | s_t-1, a_t-1)
+		- observation function
+			- o_t ~ p(o_t | s_t)
+		- reward function
+			- r_t ~ p(r_t | s_t)
+		- policy
+			- r_t ~ p(a_t | o_<=t, a_<t)
+	- transition model provides a training signal
+		- not used for planning
+	- encoder q(s_t | o_<=t, a_<t) to approximate current hidden state
+	- policy searches for the best sequence of future actions
+		- MPC to allow agent to adapt plan based on new observations
+- collect experience use partially trained model
+	- start with S episodes collected under random actions
+	- add episode to data set every C update steps
+- planning algorithm
+	- cross entropy method
+	- for I iterations
+		- for J candidate action sequences
+			- sampled from a belief distribution
+				- initialized to Normal(0,I)
+			- probabilistically roll out states
+			- evaluate expected reward over rolled out states
+		- take K best rewarded (K <= J) action sequences
+			- calculate their mean??!
+			- calculate their covariance
+		- reassign the belief as N(mean, cov) of the actions
+
 
 -----------------------------------------------------------
     Questions
@@ -44,4 +78,11 @@
 - why use image domain?
 - what does online planning mean?
 - what is the transition function for?
+	- state transition so next state given current state and action taken
 - what is a generalized variational inference objective?
+- how does the policy search for best sequence of future actions?
+	- CEM
+- is randomly sampling actions and taking roll out really the best way to plan?
+- line 8 of algorithm 2 mixes the K best actions, why is this valid?
+- their action is a scalar, how would CEM scale to higher dimensional inputs?
+- how did they create the reward as a function of latent space?
