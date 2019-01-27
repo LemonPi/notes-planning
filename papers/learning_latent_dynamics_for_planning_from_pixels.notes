@@ -71,6 +71,22 @@
 			- calculate their covariance
 		- reassign the belief as N(mean, cov) of the actions
 
+-----------------------------------------------------------
+    Recurrent State Space Model
+-----------------------------------------------------------
+- RSSM that can predict forward purely in latent space
+- observes {o,a,r}
+	- o high dimensional image
+	- a continuous action
+	- r scalar reward
+- model assumes {s}
+	- hidden state sequence
+- need to compute state posterior for parameter learning
+	- cannot directly compute because model is non-linear (why?)
+	- use encoder q(s) = prod{q(s_t|s_t-1,a_t-1,o_t)}
+- training
+	- construct #variational bound# on data log-likelihood with encoder
+
 
 -----------------------------------------------------------
     Questions
@@ -86,3 +102,14 @@
 - line 8 of algorithm 2 mixes the K best actions, why is this valid?
 - their action is a scalar, how would CEM scale to higher dimensional inputs?
 - how did they create the reward as a function of latent space?
+- what does it mean for the mean and variance of the transition model to be "parameterized by a feed-forward neural network"?
+
+-----------------------------------------------------------
+    Variational Bayesian methods
+-----------------------------------------------------------
+- techniques for approximating integrals
+	- shows up in ML
+	- when there are observations (data), unknown parameters, and latent variables
+- provides analytical approx to posterior probability of unobserved variables
+	- alternative to Monte Carlo sampling methods (MCMC)
+- derives lower bound on likelihood of observed data
