@@ -17,6 +17,28 @@
 		- comparable final performance
 
 -----------------------------------------------------------
+    Introduction
+-----------------------------------------------------------
+- planning with models is good
+	- more data efficient
+	- can tradeoff computation time for more search on actions
+	- dynamics model independent of any task
+		- transfer to other tasks in same environment
+- can learn dynamics of low dimensional environments directly
+- can learn dynamics in compact latent space for higher dimensional environments
+- environments with contact dynamics
+	- DeepMind control suite (maybe can use later)
+- contributions
+	- uses 50x less environment interactions and a similar amount of computation time than model-free methods
+	- latent dynamics model
+		- both deterministic and stochastic components
+		- stoachasticity important to capture partial observability and unpredictability
+		- determinism required for deep memory and outlier rejection
+	- predicting multiple time steps
+		- standard is to train on one-step predictions
+
+
+-----------------------------------------------------------
     Questions
 -----------------------------------------------------------
 - why use image domain?
