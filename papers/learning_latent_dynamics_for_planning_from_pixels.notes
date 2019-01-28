@@ -90,6 +90,13 @@
 - all info about observations passes through sampling step of encoder
 	- avoid deterministic shortcut from inputs to reconstructions
 
+-----------------------------------------------------------
+    Latent Overshooting
+-----------------------------------------------------------
+- objective contains reconstruction for observations and KL-divergence regularization for posteriors
+- transition only trained with 1 step prediction
+	- not a problem if our 1 step predictions are perfect (would also be perfect multi-step predictions)
+	- problem with limited capacity
 
 -----------------------------------------------------------
     Questions
@@ -106,6 +113,10 @@
 - their action is a scalar, how would CEM scale to higher dimensional inputs?
 - how did they create the reward as a function of latent space?
 - what does it mean for the mean and variance of the transition model to be "parameterized by a feed-forward neural network"?
+- comparison of results doesn't compare how long each episode using this method takes compared to D4PG
+- D4PG achieves better performance than CEM+true simulator which is an estimated upper bound on performance
+	- doesn't this mean CEM as a method is flawed?
+- how do they actually optimize their objective?
 
 -----------------------------------------------------------
     Variational Bayesian methods
