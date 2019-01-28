@@ -86,6 +86,9 @@
 	- use encoder q(s) = prod{q(s_t|s_t-1,a_t-1,o_t)}
 - training
 	- construct #variational bound# on data log-likelihood with encoder
+	- not sure how the last step in equation 3 works
+- all info about observations passes through sampling step of encoder
+	- avoid deterministic shortcut from inputs to reconstructions
 
 
 -----------------------------------------------------------
