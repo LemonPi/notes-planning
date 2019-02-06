@@ -14,3 +14,51 @@
 			- probabilistically complete
 				- with enough points solution converges to 1
 				- important is the !rate of convergence!
+
+-----------------------------------------------------------
+    C-Space distance and volume
+-----------------------------------------------------------
+- almost all algorithms need a measure of distance between 2 points in C
+	- results in a metric space
+- also important to define the volume of a subset of C
+	- results in a measure space
+- use invariant measures whenever possible
+
+-----------------------------------------------------------
+    Metric spaces
+-----------------------------------------------------------
+- (X,p) topological space X with function p : X x X -> R
+	- nonnegativity
+	- reflexivity
+		- p(a,b) = 0 iff a = b
+	- symmetry
+	- triangle inequality
+- Lp metrics are homeomorphic to norms on vector spaces
+- any subspace Y in X becomes a metric space if you restric p's domain to Y x Y
+	- means can use provided metrics on manifolds
+- extension across cartesian products (X,px) and (Y,py)
+	- Z = X x Y
+	- pz(z,z') = pz([x,y],[x',y']) = c1*px(x,x') + c2*py(y,y')
+		- c1 > 0 and c2 > 0
+	- can also apply a p-1/p power to the combination
+eg. SO(2) using complex numbers with any Lp metric from R2
+	- takes shortcut by computing length of line segment connecting 2 points
+	- actually a distortion
+eg. SO(2) by comparing angles
+	- p(t1,t2) = min(|t1-t2|, 2*pi - |t1-t2|)
+		- t in [0,2pi]
+	- equivalently the angle between 2 vectors
+		- p((a1,b1), (a2,b2)) = cos-1(a1*a2 + b1*b2)
+eg. SO(3) using quaterions
+	- live in S3 from R4
+		- can use Lp metric except for antipodal points (h = -h)
+	- p(h1,h2) = min(||h1 - h2||, ||h1 + h2||)
+		- difference of h1 to both h2 and -h2
+		- ||.|| is any norm
+	- similar problem to before of travelling inside S3 distortion
+eg. SO(3) using quaterions "angle" between
+	- extension of SO(2) angle comparison
+	- for unit vector in Rn v1*v2 = cos(theta)
+	- ps(h1,h2) = cos-1(a1*a2 + b1*b2 + c1*c2 + d1*d2)
+		- with identification of h = -h
+		- p(h1,h2) = min(ps(h1,h2), ps(h1,-h2))
