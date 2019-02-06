@@ -1,0 +1,16 @@
+-----------------------------------------------------------
+    Overview
+-----------------------------------------------------------
+- avoid explicit construction of Cobs
+	- probe C-space with a sampling scheme
+- black-box collision detection module
+	- develop planning algorithms independent of geometric models
+- give up completeness
+	- instead go for weaker notions
+	- denseness is important
+		- samples come arbitrariliy close to any configuration as iteration -> inf
+		- deterministic dense sampling leads to resolution complete
+		- random sampling is dense with probability 1
+			- probabilistically complete
+				- with enough points solution converges to 1
+				- important is the !rate of convergence!
