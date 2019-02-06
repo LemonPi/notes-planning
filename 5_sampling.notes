@@ -90,3 +90,50 @@ eg. Lebesgue measure
 	- G represents a matrix group with real entries
 	- for any measurable subset A in G and any element g in G
 		- u(A) = u(gA) = u(Ag)
+
+-----------------------------------------------------------
+    Sampling theory
+-----------------------------------------------------------
+- C is uncountably infinite
+	- sampling algo can only consider a countable number of samples
+	- so sampling order is critical: a difference between a sample set and sample sequence
+- for U,V subsets of a topological space, U is #dense# in V if cl(U) = V
+	- closure/adding boundary points to U produces U
+	eg. (0,1) in R is dense in [0,1] in R
+	eg. Q is dense in R
+	- sequence is dense if the underlying set is dense
+- a random sequence is probably dense
+- van der Corput sequence is guaranteed to be dense
+	- only defined for the unit interval
+	- let C = [0,1]/~ where 0 ~ 1
+	- reverse bits in binary representation
+	- most significant bit toggles in every step
+		- v(i) lies far away from v(i+1)
+- random sampling must be over a probability density corresponding to the Haar measure
+	eg. for C in Rm, can just sample each dimension uniformly
+	eg. for SO(3) need to uniformly sample unit quaternions or S3
+- low dispersion sampling is an alternative to random sampling
+	- optimize the #dispersion# criterion
+		- finite set P in a metric space (X,p)
+		- d(P) = sup{x in X} min{q in P} p(x,q)
+		- want low d(P)
+	- place samples to make the largest uncovered area as small as possible
+	- optimal placement in [0,1]^d is according to a Sukharev grid (regular grid...) for p = Linf
+		- achieves d(P) = 1/(2*floor(k^1/d)) for k samples in dimension d
+		- is a lower bound on achievable dispersion
+	- considered Linf instead of L2 because L2 is very hard outside of R2
+	- can use generalized van der Corput method for partial sampling if number of samples k is not known
+		- for n dimensional spaces, use n bits at a time
+- low #discrepency# sampling is another alternative
+	- avoids alignment due to grids having unexpected behaviour
+		- drives variance up
+	- D(P,R) = sup{R in R} ||P int R|/k - u(R)/u(X)|
+		- X is a measure space
+		- R collection of subsets of X called the range space
+			- usually set of all axis-aligned rectangular subsets
+		- P is a particular point set
+		- want equal point/number of elements and measure ratio
+	- d(P,Linf) <= D(P,R)^1/d
+		- !low discrepency -> low dispersion!
+		- converse not true
+	- can use Halton/Hammersley sampling or lattices
