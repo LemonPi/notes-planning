@@ -62,3 +62,31 @@ eg. SO(3) using quaterions "angle" between
 	- ps(h1,h2) = cos-1(a1*a2 + b1*b2 + c1*c2 + d1*d2)
 		- with identification of h = -h
 		- p(h1,h2) = min(ps(h1,h2), ps(h1,-h2))
+- pseudometric for behaviour similar to a metric
+	- may break symmetry, for example for travelling up/down a hill
+	eg. potential function
+
+-----------------------------------------------------------
+    Measure theory basics
+-----------------------------------------------------------
+- a measure is a function producing real values for subsets of a metric space
+	- ideally nonnegative value
+- due to Banach-Tarski paradox, need conditions on a collection B of subsets to avoid paradox a #sigma algebra#
+	1. includes empty set
+	2. if C is in B, then X \ C also in B
+	3. for any collection of a countable number of sets in B, their union must also be in B
+	- elements in B are called the mesurable sets
+eg. a nice sigma algebra, the Borrel sets
+	- for any metric space (X,p), B(x,r) = {x' in X | p(x,x') < r} open balls
+	- sets that can be constructed from these open balls using sigma algebra axioms
+	- such as an open square in R2
+		- can be constructed as the union of a countable number of balls
+- a #measure# is then defined as a function u : B -> [0,inf] such that
+	1. u(empty set) = 0
+	2. for E1,E2,... countably number of pairwise disjoint measureable sets, u(union of Es) = sum u(Ei) 
+eg. Lebesgue measure
+- can be used to define general notions of integration
+- #Haar measure# is good for some transformation groups including SO(N)
+	- G represents a matrix group with real entries
+	- for any measurable subset A in G and any element g in G
+		- u(A) = u(gA) = u(Ag)
