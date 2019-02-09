@@ -238,3 +238,15 @@ eg. Lebesgue measure
 	- smooth path after
 		- iteratively pick random pairs of points and replace segment with straight line
 			- check for collision
+
+-----------------------------------------------------------
+    Rapidly exploring dense trees
+-----------------------------------------------------------
+- incremental sampling/searching with good performance and no resolution parameters
+- RRT
+	- called RDTs to indicate a dense covering of the space
+- iteratively add vertices from a dense sequence
+	- sequence such as random, Halton, Hammersley, ...
+- important step is to connect the added vertex to the closest other vertex
+	- k-d tree
+		- scales well up to about 20 dim
