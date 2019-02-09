@@ -202,3 +202,39 @@ eg. Lebesgue measure
 			- also good to bound step size around q in C
 				- analyze the Jacobian of the transformations
 		- best to take recursive binary strategy rather than linear along [0,1]
+
+-----------------------------------------------------------
+    Incremental sampling and searching
+-----------------------------------------------------------
+- single query model
+- similar to search but instead of applying an action we generate a path segment
+	- edges represent paths rather than actions
+- most single query algos follow template:
+	1. initialize
+		- G(V,E) undirected search graph
+		- V at least 1 vertex
+			- typically qi and qg
+		- E no edges
+	2. #vertex selection method (VSM)#
+		- choose a vertex in V for expansion
+	3. #local planning method (LPM)#
+		- for some qnew in Cfree construct path Ts:[0,1] -> Cfree such that T(0) = qcur and T(1) = qnew
+		- if path cannot be constructed go to step 2
+	4. insert edge in graph
+		- insert Ts in E as an edge from qcur to qnew
+		- insert qnew in V if necessary
+	5. check for a solution
+		- determine if G encodes a solution path
+	6. return to step 2
+- each vertex is a configuration
+- each edge is a path connecting two configurations
+- variation in algos come from steps 2 and 3
+- use bidirectional search for bug traps
+- randomized potential fields
+	- simple method that scales up to 31 dof
+	- not used anymore due to parameter tuning
+	- do best first search and randomly walk if at local minima
+		- if random walk after K tries still can't escape backtrack to a random walked to node
+	- smooth path after
+		- iteratively pick random pairs of points and replace segment with straight line
+			- check for collision
