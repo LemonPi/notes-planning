@@ -185,3 +185,20 @@ eg. Lebesgue measure
 				- the distance between the closest point pair in those is the distance between the bodies
 				- our assumption of incremental motion means F1 and F2 are likely the same across frames
 					- neighbouring features also tested for if the cloest feature pair changed
+- API to collision checking usually takes a path as input, not just a configuration
+	- path T:[0,1] -> C needs to all be not in collision
+	- common approach is to sample interval [0,1] and test on samples
+		- practically choose a fixed dq > 0 as C-space step size
+			- then choose dt such that distance(T(t), T(t+dt)) <= dq
+			- determine dq experimentally
+				- too small means wasting time
+				- too large means chance of jumping through a thin obstacle
+		- also exists algorithmic ways to verify collision-free
+			- consider max distance any point could've moved
+				eg. in 2D rotation it's r|theta - theta'|
+					- also consider translation, so together we require |x-x'| + |y-y'| + r|theta-theta'| < d
+						- d is the closest distance between those bodies between t and t'
+		- for multijoints have to select step sizes for each joint separately
+			- also good to bound step size around q in C
+				- analyze the Jacobian of the transformations
+		- best to take recursive binary strategy rather than linear along [0,1]
