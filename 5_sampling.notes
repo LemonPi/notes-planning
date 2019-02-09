@@ -137,3 +137,51 @@ eg. Lebesgue measure
 		- !low discrepency -> low dispersion!
 		- converse not true
 	- can use Halton/Hammersley sampling or lattices
+
+
+-----------------------------------------------------------
+    Collision detection
+-----------------------------------------------------------
+- distance function beteween sets is the min distance over all point pairs
+- with robots often split into 2 phases
+	- robot is a collection of m links A1..Am
+	- O has k connected components
+	1. broad phase
+		- avoid expensive computation
+		- use simple bounding boxes to find what can't possibly be overlapping/colliding
+	2. narrow phase
+		- individual pairs of bodies checked for collision
+		- each body is a subset of R2 or R3
+			- defined using some primitives
+				eg. triangles in R3
+		- hierarchical methods
+			- decompose each body into a tree
+				- each vertex is abounding region containing a subset of the body
+				- bounding region of root vertex contains the whole body
+			- bounding region type has a tradeoff
+				- tight fit
+				- efficient intersection test
+				- in order of decreasing efficiency but tighter fit:
+					1. sphere
+					2. axis-aligned bounding box (AABB)
+					3. oriented bounding box (OBB)
+					4. convex hull
+			- recursively generate vertices by binary partition
+			- test collision by recursively decomposing one tree
+				- if tested at no collision at any level then no collision possible
+				- if tested for collision decompose one of the colliding boxes into two and test those against the other 1
+		- incremental methods
+			- assume continuous calls to collision detection
+				- bodies move only a small amount
+				- achieves almost constant time for convex polyhedral bodies
+			- requires coherent models
+				- bodies in R2 have to be polygons and bodies in R3 have to be polyhedra
+					- cannot be lower dimensional such as an isolated line segment in R2
+			- consider Voronoi regions of features
+				- in R2 features are edges and vertices
+				- in R3 features also include faces
+				- each feature has a corresponding Voronoi region
+			- for 2 convex bodies consider any 2 features F1 and F2
+				- the distance between the closest point pair in those is the distance between the bodies
+				- our assumption of incremental motion means F1 and F2 are likely the same across frames
+					- neighbouring features also tested for if the cloest feature pair changed
