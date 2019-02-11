@@ -1,0 +1,81 @@
+-----------------------------------------------------------
+    Overview
+-----------------------------------------------------------
+- want more efficient RL in terms of learning from experience
+	- model based methods more efficient but not used to due to model errors
+- use Gaussian processes (GP) to capture model uncertainty
+	- non-parametric so don't have to tune parameters
+	- also don't have to be manually specified
+		- can be applied for a broad range of tasks
+- policy search method
+	- averaging over infinitely many possible dynamics models
+	- not value-function based
+		- value-functions are discontinuous 
+			- doesn't scale to high dimensional state space
+
+-----------------------------------------------------------
+    Model based policy search
+-----------------------------------------------------------
+- trying to find pi(x,theta) = u policy/controller
+	- parameterized by theta
+	- minimizing long-term cost (J(theta)) of following the controller
+- uses 3 components
+	1. GP dynamics model
+		- used for long term predictions p(x1|pi) .. p(xT|pi)
+	2. deterministic approximate inference for long-term predictions and policy evaluation
+	3. analytic computation of policy gradients dJpi(theta)/dtheta
+- algo
+	- init theta ~ N(0,I)
+	- apply random control and record data
+	- repeat
+		- learn GP dynamics using all data (3.1)
+		- repeat
+			- approx inference to get Jpi(theta) for policy evaluation (3.2)
+			- get gradients Jpi(theta)/dtheta (3.3)
+			- update params
+		- until convergence, then return theta*
+	- set pi* <- pi(theta*)
+	- apply pi* to system and record data
+	- until task learned
+
+-----------------------------------------------------------
+    3.1 Model learning
+-----------------------------------------------------------
+- training input tuples (xt, ut) in R^{D+F}
+- training target dt_t = xt+1 - xt
+	- interesting that target is not xt+1
+- GP completely specified by 2 things
+	1. mean function m(.)
+	2. positive semidefinite covariance function/kernel k(.,.) 
+- consider m === 0
+- consider kernel k(xp,xq) = sigma_f^2 exp(-1/2(xp-xq)^T L^-1 (xp-xq)) + delta*sigma_w^2
+	- x's here are actually [x u] stacked
+	- sigma_f^2 is the variance of the latent transition function
+	- L = diag([l1^2 ... l{D+F}^2])
+		- characteristic length-scales
+- learn parameters (li, sigma_f, sigma_w) by evidence maximization
+- GP is a 1-step prediction model
+	- successor is Gaussian distributed
+		- p(xt+1|xt,ut) = N(xt+1|mu_t+1, Sigma_t+1)
+		- equations for Ef[Delta_t] and varf[Delta_t] 6-7
+
+-----------------------------------------------------------
+    3.2 Policy evaluation
+-----------------------------------------------------------
+- voodoo math???
+- cost has to be a class that allows eq 11 to be evaluated analytically
+	eg. polynomials, mixtures of Gaussians
+
+-----------------------------------------------------------
+    3.3 Analytic gradients for policy improvement
+-----------------------------------------------------------
+- require expected cost is differentiable wrt moments of state distribution
+- require moments of control distribution (mu_u, Sigma_u) are differentiable wrt policy parameters theta
+
+-----------------------------------------------------------
+    Questions
+-----------------------------------------------------------
+- what does it mean to be limited to episodic set-ups?
+- how was the kernel chosen?
+	- seems like a standard choice/convention?
+- how to make sense of equations 6-7?
