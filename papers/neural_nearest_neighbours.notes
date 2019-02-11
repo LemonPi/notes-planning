@@ -1,0 +1,47 @@
+------------------------------------------------------------
+    Introduction
+-----------------------------------------------------------
+- relaxation of KNN
+	- continuous
+	- deterministic
+	- parameterized by temperature parameter
+		- approaches KNN as temperature -> 0
+- method to obtain bigger receptive fields
+	- often operations on NN are local
+	- or stacking convolutional layers
+	- leverage self-similarity
+- keypoint is nonlocal NN processing
+- optimizes feature space for matching
+	- shoot, seems like what I was going for?
+- output is a set of neighbours
+	- exactly what I want :D
+
+-----------------------------------------------------------
+    Relaxations
+-----------------------------------------------------------
+- naive knn is not differentiable
+- first relax KNN selection as a limit distribution
+	- k categorical distributions
+	- P[w^1=i|a1,t] = cat(a1,t) = exp(a1i/t)/sum{i' in I}exp(a1i'/t)
+		- a1i = -d(q,xi)
+	- treat w1 as a one-hot coded vector
+		- w1 = i means ith entry is 1 while others are 0
+	- generalize to k with an iterative scheme for cat(wj+1|aj+1,t)
+		- set wj-th entry of aj to -inf
+			- force it to not be sampled again
+		- aj+1_i = aj_i + log(1-wj_i)
+			- aj_i if wj /= i
+			- -inf if wj = i
+	- stochastic nearest neighbours {X1 .. Xk} of q is then
+		- Xj = sum{i in I}wj_i * xi
+- direct usage problematic due to gradient estimators on discrete variables having high variance
+- use a continuous deterministic relaxation
+	- replace one-hot coded weight vectors with continuous expectations (let's call them v)
+		- v1_i = E[w1_i | a1,t] = P[w1=i | a1,t]
+	- replace update of logits using v instead of w (can remove the if)
+
+-----------------------------------------------------------
+    Questions
+-----------------------------------------------------------
+- what is an N^3 block?
+	- neural nearest neighbours...
