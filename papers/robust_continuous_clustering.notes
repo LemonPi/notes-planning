@@ -1,0 +1,20 @@
+-----------------------------------------------------------
+    Overview
+-----------------------------------------------------------
+- objective is to continuously (differentiably) cluster without knowing apriori number of clusters
+- objective function includes 2 competing terms
+	- mean shift of data point representatives
+	- drift of point representatives from data points
+- robust estimators to prune intercluster connections
+- alternate coordinate descent on representatives and dual line process variables
+	- not differentiable!
+	- need to look at Deep continuous clustering
+
+-----------------------------------------------------------
+    Mean shift
+-----------------------------------------------------------
+- cluster all points in the attraction basin of a mode
+- for each data point look at bandwidth/points within a radius
+	- find mean inside the bandwidth and repeat with the new mean
+	- stop when only 1 data point in cluster left
+
