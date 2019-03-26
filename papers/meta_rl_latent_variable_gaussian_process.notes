@@ -1,0 +1,110 @@
+-----------------------------------------------------------
+    Overview
+-----------------------------------------------------------
+- meta learning as hierarchical latent variable model
+- up to 60% reduction in average intraction time compared to baseline
+
+-----------------------------------------------------------
+    Introduction
+-----------------------------------------------------------
+- need to explicitly model model uncertainty
+	- deterministic models implicitly are certain
+	- talked about in PILCO
+- use MPC instead of policy search
+	- allows online model updates vs update only after a trial
+- meta learning used for (xor)
+	- multi-task learning
+	- multiple or non-stationary dynamics (robot changes)
+- this paper considers sequential learning
+	- knowledge from prior tasks for more efficient learning of new ones
+	- different system specifications
+		- latent variable
+	- same task objective
+- model dynamics with GP
+- policy learning with MPC
+- variational inference to get posterior distribution on latent variable
+- update posterior online with more data
+	- during execution of a control strategy
+
+-----------------------------------------------------------
+    Model
+-----------------------------------------------------------
+- x_t+1 = f(x_t, c_t) + e
+	- x in RD
+	- c in RK
+- represent dynamics with GP
+	- non-parametric
+	- interpreted as distribution over functions
+	- infinite collection of random variables
+		- any finite number of which are jointly Gaussian distributed
+	- fully specified by a mean function m and covariance function k
+		- covariance aka kernel
+			- encodes high level structural assumptions
+				eg. smoothness, periodicity
+- latent embedding h
+	- dynamics is global function conditioned on latent embedding
+		- x_t+1 = f(x_t, c_t, h_p) + e
+- use RBF kernel
+- simultaneously accomplish
+	- multi-task learning
+	- transfer learning
+- training is multi-task learning
+	- learn global funcition f and latent embeddings h
+	- given trajectory observations from a set of training systems
+- evaluation is inference
+	- get distribution over a set of latent variables h*
+- performance metric
+	- single-shot performance
+		- infer latent test embeddings without updating global model
+	- few-shot learning
+		- how much additional data to solve an RL task
+		- update global model
+		- combines multi-task and transfer learning
+- hyperparameter summary
+	D: dimension of state
+	K: dimension of control
+	Q: dimension of latent space
+	L: diagonal matrix of squared length scales in RBF
+	sigma_f: signal variance in RBF
+	H: horizon (discrete number of time steps ahead to consider)
+	P: number of dynamics specifications (infinite in theory)
+	T: total number of observations
+	M: number of inducing points
+
+-----------------------------------------------------------
+    Meta-learning Model
+-----------------------------------------------------------
+- GP prior on unknown transition function
+	- concatenated state x~t = (xt, ct, hp) in R^{D+K+Q} input
+	- yt = xt+1 - xt is target
+	- m(x~t) = 0 is mean function
+		- start with guess states does not change
+	- !each dimension of targets y is modelled by an independent GP!
+- Gaussian likelihood p(yt|x~t, f(.), theta) = N(yt|f(x~t, E))
+	- theta are model hyperparameters
+		- theta = {E, L, sigma_f, Q}
+	- f(.) is a multi-dimensional function (f^1(.), ..., f^D(.))
+- standard normal prior hp ~ N(0, I)
+
+-----------------------------------------------------------
+    Inference
+-----------------------------------------------------------
+- optimize theta wrt log-marginal likelihood
+	- marginalize latent variables
+- need posterior GP for prediction
+	- use approximate variational inference
+		- stochastic variantional inference (Hoffman, 2013)
+			- allows applying complex Bayesian models to massive data sets
+	- assume independence between GP function and task variables
+- P different systems too many
+	- O(T^3) training
+	- O(T^2) predictions
+	- T is number of observations
+	- use variational sparse GP approximation
+		- approximation depends on M << T #inducing points#
+		- gives O(TM^2) and O(TM) performance instead
+-----------------------------------------------------------
+    Questions
+-----------------------------------------------------------
+- is 60% relative to other meta learning baselines?
+- meta training becomes inference in a meta-learning model?
