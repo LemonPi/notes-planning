@@ -1,0 +1,37 @@
+-----------------------------------------------------------
+    Overview
+-----------------------------------------------------------
+- want network to imagine goal-directed visual plans
+	- plausible sequence of observations that transitions a system from current config to deseried
+		- use as reference trajectory
+- combine representation learning and planning
+- observations in high dimensions such as images
+- maximize mutual information between generated observation and transition in planning model
+- structure planning model to be compatible with efficient planning algorithms
+
+-----------------------------------------------------------
+    Methodology
+-----------------------------------------------------------
+- search for way point observations
+	- not action sequences
+
+-----------------------------------------------------------
+    GAN
+-----------------------------------------------------------
+- input
+	- unstructured random noise
+	- structured pair of consecutive states
+		- from low dimensional, parameterized dynamical system (planning model)
+- trained from random exploration of system
+- output
+	- observation
+	- combined with trajectory generated in the model state space, results in a sequence of observatiosn
+
+-----------------------------------------------------------
+    Model representation
+-----------------------------------------------------------
+- suitable for AI planning tools
+	- discrete and deterministic
+		- use graph search
+	- continuous
+		- linear interpolation
